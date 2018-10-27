@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>
+      Ligue Magnus: Nombre de buts par journée
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
+    <script src="http://code.highcharts.com/highcharts.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Ligue Magnus 2018-2019: Nombre de buts par journée'
+        },
+        subtitle: {
+        	text: 'Hockey Hebdo'
+        },
+        xAxis: {
+            text: 'Nombre de buts',
+            categories: ['J1', 'J2',  'J3', 'J4', 'J5', 'J6', 'J7<br/>05/10', 'J8<br/>09/10<br/>(-1 match)','J9<br/>12-13/10','J10<br/>07+16/10<br/>-1 match','J11<br/>19/10','J12<br/>21/10<br/>-1 match','J13<br/>08/09','J26<br>06/10']
+        },
+        yAxis: {
+        
+			reversed: false,
+			title: {
+               text: 'Nombre de buts'
+            },
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                  color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                }
+            }
+        },
+		credits: {			
+		text: 'HockeyHebdo.com',			 
+		href: 'http://www.hockeyhebdo.com'		
+		},		
+		legend: {        
+           verticalAlign: 'top',
+            y: 51,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+            borderColor: '#CCC',
+            borderWidth: 1,
+            shadow: false
+        },
+        plotOptions: {
+			column: {
+				stacking: 'normal'
+			},
+            line: {
+               dataLabels: {
+                    enabled: true
+                },
+               enableMouseTracking: true
+            }
+        },
+        tooltip: {
+			headerFormat: '<b>{point.x}</b><br/>',
+            pointFormat: '<u>{series.name}</u>: <b>{point.y}</b> buts soit <b>{point.percentage:.0f}%</b> sur un total de {point.stackTotal} buts'        	
+        },
+		series: [{
+            name: 'Domicile',
+            data: [10,12,14,27,22,30,16, 21,16, 13 ,25,20  ,5         ,1],			
+			color: 'blue'              //8      10        J13       J26
+        }, {
+            name: 'Extérieur',
+            data: [26,8,15,20,15,13,21, 16,15,  5  ,19,17   ,4         ,5],
+			color: 'red'
+        } ]
+    });
+});
+</script>	
+  </head>
+ <body>
+ <div style="text-align: center;">
+ <img alt="" src="http://www.hockeyhebdo.com/medias/2015-16/stats_magnus/NbButsParJournee.jpg" /></div>
+    <div id="container" style="min-width: 600px; height: 600px; margin: 0 auto"></div>
+  </body>
+</html>

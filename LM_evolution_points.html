@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+  <head>
+    <title>
+      Ligue Magnus 2018-19: Evolution des points
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
+    <script src="http://code.highcharts.com/highcharts.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+	$(function () {
+
+    $('#container').highcharts({
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: 'Ligue Magnus: Evolution des points par équipe et par journée'
+        },
+
+        subtitle: {
+        	text: 'Note: ce graphique ne prend en compte que les points, le classement ne prend pas en compte le goal-average.<br/>Bordeaux : -9 pts de pénalité'
+        },
+        xAxis: {
+			tickmarkPlacement: 'on',
+            text: 'Journées',
+            categories: ['J13<br/>08/09', 'J1', 'J2', 'J3<br/>21/9', 'J4', 'J5', 'J6<br/>02/10', 'J7', 'J10+J26<br/>','J8<br/>09/10', 'J9', 'J10', 'J11<br/>19/10','J12<br/>21/10', 'J13', 'J14<br/>', 
+			'J15<br/>', 'J16<br/>', 'J17<br/>','J18','J19','J20','J21', 'J22', 'J23','J24','J25','J12+J33','J26','J27', 'J28','J29','J30','J31','J32<br/> (-1 match)','J33','J34']
+        },
+
+        yAxis: {
+			min: -9,
+			title: {
+               text: 'Points'
+            },
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                  color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                }
+            }
+        },
+		credits: {
+			text: 'HockeyHebdo.com',
+			 href: 'http://www.hockeyhebdo.com'
+		},
+		legend: {        
+           verticalAlign: 'top',
+		   credits: true,
+		   layout:"vertical",
+			y: 75,
+            x: 85,
+            floating: true,
+			align: "left",
+            backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+            borderColor: '#CCC',
+            borderWidth: 1,
+            shadow: true
+        },
+        plotOptions: {
+			line: {
+			    dataLabels: {
+					enabled:true,
+					color: 'darkred',
+					marker: {
+						lineWidth: 1,
+						lineColor: '#666666'
+					}
+                },
+                enableMouseTracking: true
+            } 
+        },
+        tooltip: {
+			split: true,
+			valueSuffix: ' points',
+			valuePrefix: '' 
+		},
+		
+	//'Amiens', 'Angers', 'Bordeaux', 'Chamonix','Anglet','Gap',
+	//'Grenoble','Lyon','Mulhouse','Nice','Rouen', 'Strasbourg'
+	series: [
+	 {
+        name: 'Grenoble',
+        data: [2,5,8,11,14,16,19,22,25,25,25,25,28,31],
+			color:'red'
+    }, {
+        name: 'Rouen',
+        data: [0,3,6,9,12,15,17,19,21,21,24,24,27,30],
+			color:'#BC8E24'
+    }, {
+        name: 'Lyon',
+        data: [0,0,2,2,5,5,8,11,11,11,14,17,17,20],
+			color:'#B46367'
+    }, {
+        name: 'Angers',
+        data: [0,0,3,6,6,6,9,9,9,12,15,18,20,20],
+			color:'darkblue'
+    }, {
+        name: 'Chamonix',
+        data: [1,1,1,1,4,7,7,10,10,10,10,13,16,19],
+			color : '#1C325C'
+    }, {
+        name: 'Bordeaux (-9 pts)',
+        data: [-9,-6,-6,-3,-3,0,3,6,7,10,13,13,16,16],
+			color:'black'
+    }, {
+        name: 'Bordeaux (sans pénalité de 9pts)',
+        data: [0,3,3,6,6,9,12,15,16,19,22,22,25,25],
+			color:'black'
+    }, {
+        name: 'Gap',
+        data: [0,0,1,1,4,4,7,10,10,13,14,14,14,14   ],
+			color:'#54BEF7'
+    }, {
+        name: 'Nice',
+        data: [0,3,6,9,9,12,12,12,12,12,12,12,14,17],
+		color:'red'
+    },{
+        name: 'Amiens',
+        data: [0,2,2,2,4,5,5,5,5,8,8,11,11,11],
+			color:'grey'
+    }, {
+        name: 'Anglet',
+        data: [0,3,3,3,3,6,6,7,7,10,11,11,12,12],
+			color:'#008000'
+    }, {
+        name: 'Mulhouse',
+        data: [0,0,3,3,4,4,5,5,5,5,7,7,8,8],
+			color:'purple'
+    }, {
+        name: 'Strasbourg',
+        data: [0,1,1,4,4,4,4,4,4,4,6,6,6,6],
+			color:'#F4FE14'
+    }]
+    });
+});
+</script>	
+  </head>
+ <body>
+ <div style="text-align: center;">
+ <img alt="" src="http://www.hockeyhebdo.com/medias/2015-16/stats_magnus/EvolutionClassement.jpg" /></div>
+    <div id="container" style="min-width: 600px; height: 600px; margin: 0 auto"></div>
+  </body>
+</html>

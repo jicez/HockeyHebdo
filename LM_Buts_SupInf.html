@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>
+      Chart
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
+    <script src="http://code.highcharts.com/highcharts.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$(function () {
+    // categories
+    var categories = ['Amiens','Angers','Anglet','Bordeaux','Chamonix','Gap','Grenoble','Lyon','Mulhouse','Nice','Rouen','Strasbourg','<b>MOYENNE</b>'];
+    $(document).ready(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Ligue Magnus<br/>Infériorités et supériorités'
+            },
+            subtitle: {
+                text: 'Réussite en supériorité et en infériorité numérique<br/>après la 9e journée du 12-13/10'
+            },
+            xAxis: [{
+                categories: categories,
+                reversed: true,
+                labels: {
+                    step: 1
+                }
+            }, { // mirror axis on right side
+                opposite: true,
+                reversed: true,
+                categories: categories,
+                linkedTo: 0,
+                labels: {
+                    step: 1
+                }
+            }],
+            yAxis: {
+               visible: false
+            },
+            plotOptions: {
+				pointWidth: 20,
+                series: {
+                    stacking: 'normal',
+					dataLabels: {
+						formatter: function() {
+								if (this.y == 0) return '';
+								return Math.abs(this.y) + ' ';
+							},
+						enabled: true,
+						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black'
+                    }					
+                }
+            },
+            credits: {
+				text: 'HockeyHebdo.com',
+				href: 'http://www.hockeyhebdo.com'
+			},
+			tooltip: {
+					formatter: function() {
+                    var indexS = this.series.index,
+                        indexP = this.point.x,
+                        series = this.series.chart.series,
+                        out = '<b>'+ this.x +'</b><br/>';
+                    
+                    switch(indexS) {
+                        case 0:
+                            name = series[1].name;
+							if (Math.abs(series[1].data[indexP].y < 2)) name = 'but marqué';
+                            out += Math.abs(series[1].data[indexP].y, 0) + ' ' + name;
+                            out += ' en ' +  Math.abs(this.y,0) + ' ' + this.series.name + '<br/>';
+                            out += '<br/>soit <b>'+ Highcharts.numberFormat((series[1].data[indexP].y / Math.abs(this.y, 0)) *100, 1 )  + '% de réussite</b>';                            
+                            break;
+                        case 1:
+                            // buts en sup num
+                            out += Math.abs(this.y,0) + ' ' + this.series.name;
+                            out += ' en ' + Math.abs(series[0].data[indexP].y, 0) + ' ' + series[0].name;
+                            out += '<br/>soit <b>'+ Highcharts.numberFormat((this.y / series[0].data[indexP].y) * 100,1 )  + '% de  réussite</b>';                            
+                            break;
+                        case 2:
+							out += Math.abs(series[3].data[indexP].y, 0) + ' ' + series[3].name;
+                            out += ' en ' +  Math.abs(this.y,0) + ' ' + this.series.name + '<br/>';
+                            out += '<br/>soit <b>'+ Highcharts.numberFormat((100 - (Math.abs(series[3].data[indexP].y) / Math.abs(this.y, 0)) * 100), 1)  + '% de réussite</b>';
+                            break;
+                        case 3:
+							// buts encaissés en inf
+                            out +=  Math.abs(this.y,0) + ' ' + this.series.name;
+                            out += ' en ' + Math.abs(series[2].data[indexP].y, 1) + ' ' + series[2].name + '<br/>';
+                             out += '<br/>soit <b>'+ Highcharts.numberFormat((100 - (Math.abs(this.y, 0)) / Math.abs(series[2].data[indexP].y) * 100), 1)  + '% de réussite</b>';
+                            break;
+						case 4:
+                            name = this.series.name;
+							if (Math.abs(this.y,0) == 1) name = 'but marqué en infériorité';
+							out +=  Math.abs(this.y,0) + ' ' + name;
+                            break;
+						case 5:
+							name = this.series.name;
+							if (Math.abs(this.y,0) == 1) name = 'but encaissé en supériorité';
+                            out +=  Math.abs(this.y,0) + ' ' + name;
+                            break;
+                   }
+                    return out;
+            }
+            },
+ 		   series: [{
+                name: 'Supériorités',
+                data: [46,36,32,56,44,24,52,41,49,43,51,50,  44],
+ 				color: 'lightblue',
+                stack: 'supinf',
+            }, {
+			// 
+                name: 'Buts marqués',
+                data: [9,7,3,10,5,7,16,8,6,7,10,8, 8], 
+                color: 'darkblue',
+                stack: 'supinf'
+            },{
+			// negative
+                name: 'Infériorités',
+                data: [-35,-47,-43,-48,-44,-37,-46,-49,-53,-37,-38,-47, -44],
+                stack: 'supinf',
+                color: 'orange'
+            },{
+			// 
+                name: 'Buts encaissés',
+                data: [-7,-13,-5,-5,-10,-7,-2,-11,-16,-5,-4,-11, -8], 
+				stack: 'supinf',
+                color : 'red'
+            },{
+			// neg
+                name: 'Buts marqués en infériorité',
+                data: [-0,-0,-1,-0,-0,-1,-0,-1,-0,-1,-0,-1, -0.4], 
+                stack: 'contre',
+                color : 'green'
+            },{
+				name: 'Buts encaissés en supériorité',
+                data: [0,0,0,0,0,0,0,0,3,1,0,1, 0.4], 
+                stack: 'contre',
+                color : 'black'
+            }]
+        });
+    });
+});
+</script>	
+	
+  </head>
+ <body>
+  <div style="text-align: center;">
+  <img alt="" src="http://www.hockeyhebdo.com/medias/2015-16/stats_magnus/ReussiteInfSup.jpg" />
+  </div>
+    <div id="container" style="min-width: 650px; height: 600px; margin: 0 auto"></div>
+  </body>
+</html>

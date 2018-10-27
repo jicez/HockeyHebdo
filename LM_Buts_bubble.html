@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Highcharts Demo</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <script
+    type="text/javascript"
+    src="/js/lib/dummy.js"
+    
+  ></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+
+  <style type="text/css">
+    
+  </style>
+  
+</head>
+<body>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+
+<div id="container" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto;"></div>
+  <!-- TODO: Missing CoffeeScript 2 -->
+
+  <script type="text/javascript">
+
+
+    
+
+Highcharts.chart('container', {
+
+    chart: {
+        type: 'bubble',
+        plotBorderWidth: 1,
+        zoomType: 'xy'
+    },
+
+    title: {
+        text: 'Efficacité des équipes: buts marqués/encaissés et points'
+    },
+	legend: {
+        enabled: false
+    },
+    xAxis: {
+		title: {
+            text: 'Buts marqués'
+        },
+        gridLineWidth: 1
+    },
+
+    yAxis: {
+		title: {
+            text: 'Buts encaissés'
+        },
+        startOnTick: false,
+        endOnTick: false
+    },
+	tooltip: {
+        useHTML: true,
+        headerFormat: '<table>',
+        pointFormat: '<tr><th colspan="2"><h3>{point.club}</h3></th></tr>' +
+            '<tr><th>Buts encaissés:</th><td>{point.x}</td></tr>' +
+            '<tr><th>Buts marqués:</th><td>{point.y}</td></tr>' +
+            '<tr><th>Points:</th><td>{point.z}</td></tr>',
+        footerFormat: '</table>',
+        followPointer: true
+    },
+	plotOptions: {
+        series: {
+            dataLabels: {
+                enabled: true,
+                format: '{point.name}'
+            }
+        }
+    },
+	credits: {
+			text: 'HockeyHebdo.com',
+			 href: 'http://www.hockeyhebdo.com'
+		},
+    series: [{
+        data:
+[
+            { x: 16, y: 50, z: 25, name: '1', club: 'Grenoble' },
+            { x: 16, y: 32, z: 24, name: '2', club: 'Rouen' },
+            { x: 19, y: 33, z: 22, name: '7', club: 'Bordeaux' },
+            { x: 21, y: 23, z: 13, name: '3', club: 'Gap' },
+            { x: 26, y: 25, z: 12, name: '4', club: 'Nice' },
+            { x: 24, y: 19, z: 11, name: '6', club: 'Lyon' },
+            { x: 31, y: 27, z: 15, name: '5', club: 'Angers' },
+            { x: 28, y: 22, z: 11, name: '8', club: 'Anglet' },
+            { x: 27, y: 22, z: 8, name: '10', club: 'Amiens' },
+            { x: 37, y: 17, z: 5, name: '11', club: 'Mulhouse' },
+            { x: 36, y: 30, z: 10, name: '9', club: 'Chamonix' },
+            { x: 39, y: 20, z: 6, name: '12', club: 'Strasbourg' }
+        ],
+
+		
+        marker: {
+            fillColor: {
+                radialGradient: { cx: 0.4, cy: 0.3, r: 0.7 },
+                stops: [
+                    [0, 'rgba(255,255,255,0.5)'],
+                    [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0.5).get('rgba')]
+                ]
+            }
+        }
+    }]
+
+});
+
+
+</script>
+
+  <script>
+    // tell the embed parent frame the height of the content
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: ""
+      }], "*")
+    }
+  </script>
+</body>
+</html>

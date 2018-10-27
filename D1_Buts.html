@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>
+      Division 1 : Nombre de buts par journée
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
+    <script src="http://code.highcharts.com/highcharts.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Division 1: Nombre de buts par journée'
+        },
+        subtitle: {
+        	text: 'Hockey Hebdo'
+        },
+        xAxis: {
+            text: 'Nombre de buts',
+            categories: ['J1<br/>15/09', 'J2<br/>22/09',  'J3<br/>29/09', 'J4<br/>13/10', 'J5<br/>20/10', 
+			'J6<br/>27/10', 'J7<br/>05/10', 'J8<br/>09/10<br/>(-1 match)','J9<br/>12-13/10',
+			'J10<br/>07/10','J13<br/>08/09','J26<br>06/10']
+        },
+        yAxis: {
+        
+			reversed: false,
+			title: {
+               text: 'Nombre de buts'
+            },
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                  color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                }
+            }
+        },
+		credits: {			
+			text: 'HockeyHebdo.com',			 
+			href: 'http://www.hockeyhebdo.com'		
+		},		
+		legend: {        
+           verticalAlign: 'top',
+            y: 51,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+            borderColor: '#CCC',
+            borderWidth: 1,
+            shadow: false
+        },
+        plotOptions: {
+			column: {
+				stacking: 'normal'
+			},
+            line: {
+               dataLabels: {
+                    enabled: true
+                },
+               enableMouseTracking: true
+            }
+        },
+        tooltip: {
+			headerFormat: '<b>{point.x}</b><br/>',
+            pointFormat: '<u>{series.name}</u>: <b>{point.y}</b> buts soit <b>{point.percentage:.0f}%</b> sur un total de {point.stackTotal} buts'        	
+        },
+		series: [{
+            name: 'Domicile',
+            data: [28,24,35,26,27],			
+			color: 'blue'
+        }, {
+            name: 'Extérieur',
+            data: [20,17,15,23,21],
+			color: 'red'
+        } ]
+    });
+});
+</script>	
+  </head>
+ <body>
+ <div style="text-align: center;">
+ <img alt="" src="http://www.hockeyhebdo.com/medias/2016-17/stats/D1/D1_buts.jpg" /></div>
+    <div id="container" style="min-width: 600px; height: 600px; margin: 0 auto"></div>
+  </body>
+</html>

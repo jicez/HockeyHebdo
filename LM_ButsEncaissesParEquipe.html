@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Highcharts Demo</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <script
+    type="text/javascript"
+    src="/js/lib/dummy.js"
+    
+  ></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+
+  <style type="text/css">
+    
+  </style>
+  
+</head>
+<body>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+
+  <script type="text/javascript">
+
+
+Highcharts.setOptions({
+    colors: Highcharts.map(Highcharts.getOptions().colors, function (color) {
+        return {
+            radialGradient: {
+                cx: 0.5,
+                cy: 0.3,
+                r: 0.7
+            },
+            stops: [
+                [0, color],
+                [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+            ]
+        };
+    })
+});
+
+// Build the chart
+Highcharts.chart('container', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie',
+		events: {
+			load: function(event) {
+				var total = 0; // get total of data
+				for (var i = 0, len = this.series[0].yData.length; i < len; i++) {
+					total += this.series[0].yData[i];
+				}
+				var text = this.renderer.text(
+					'Total: ' + total + ' buts.',
+					this.plotLeft,
+					this.plotTop - 20
+				).attr({
+					zIndex: 5
+				}).add() // write it to the upper left hand corner
+			}
+		}
+    },
+    title: {
+        text: 'Buts encaissés par équipe'
+    },
+	subtitle: {        	
+			text: 'Ligue Magnus 2018-19<br/>Hockey Hebdo'
+		}, 
+
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b><u>{point.label}</u></b>:<br/> {y} buts ({point.percentage:.0f}%)',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                },
+                connectorColor: 'silver'
+            }
+        }
+    },
+	credits: {
+			text: 'HockeyHebdo.com',
+			 href: 'http://www.hockeyhebdo.com'
+		},
+    series: [{
+        name: 'Buts encaissés',
+        data: [
+			{ label: "Grenoble", y: 20, color: '#f54a01' },
+			{ label: "Rouen (-1 match)", y: 18, color: '#f2ac3a' },
+			{ label: "Bordeaux (-1 match)", y: 20, color: '#6a160c' },
+			{ label: "Angers (-1 match)", y: 36, color: 'purple' },
+			{ label: "Lyon", y: 39, color: 'blue'  },
+			{ label: "Gap (-1 match)", y: 34, color : '#40c7ff'  },
+			{ label: "Nice", y: 37, color: '#d70415'  },
+			{ label: "Anglet", y: 41, color: 'green' }, 
+			{ label: "Chamonix (+1 matchs)", y: 41, color: '#9e0d13'  },
+			{ label: "Amiens", y: 35, color: '#9b9c9e'  },
+			{ label: "Mulhouse (+1 matchs)", y: 59, color: 'black'  },
+			{ label: "Strasbourg", y: 51, color: '#f1e90b'  }]
+}],
+	navigation: {
+        buttonOptions: {
+            enabled: false
+        }
+    }
+});
+
+
+</script>
+
+  <script>
+    // tell the embed parent frame the height of the content
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: ""
+      }], "*")
+    }
+  </script>
+</body>
+</html>
