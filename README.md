@@ -3,6 +3,8 @@ Graphiques des statistiques des championnats de France de Hockey sur Glace
 
 Ligue Magnus (élite), Division 1 (2e échelon)
 Utilisation exclusive pour Hockey Hebdo http://www.hockeyhebdo.com 
+www.hockeyhebdo.com/classement-ligue-magnus-hockey,1.html
+www.hockeyhebdo.com/classement-ligue-magnus-hockey,2.html
 
 Données générées par les feuilles de match et enregistrées sur :
 http://ligue_magnus.wttstats.pointstreak.com
