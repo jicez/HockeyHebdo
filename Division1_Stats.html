@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+  <title>2018-19 Statistiques Divison 1 par Hockey Hebdo</title>
+  
+    <script type='text/javascript' src='http://code.jquery.com/jquery-1.4.2.js'></script>
+   
+  <link rel="stylesheet" type="text/css" href="/css/normalize.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css"/>
+  
+  <style type='text/css'>
+    
+  </style>
+  
+<script type='text/javascript'>
+
+function loadIframe(iframeName, url) {
+    var $iframe = $('#' + iframeName);
+    if ( $iframe.length ) {
+        $iframe.attr('src',url);   
+        return false;
+    }
+    return true;
+}
+
+</script>
+
+</head>
+<body>
+ <ol type="1">
+	<li><a href="./D1_Classements.html" onclick="return loadIframe('JC_HH', this.href);"> Evolution du classement par club et par journ&eacute;e</a></li>	
+	<li><a href="./D1_evolution_points.html" onclick="return loadIframe('JC_HH', this.href);"> Evolution des points marqués par club et par journ&eacute;e</a></li>	
+	<li><a href="./D1_Buts.html" onclick="return loadIframe('JC_HH', this.href);">Nombre de buts par journ&eacute;e</a></li>
+	<li><a href="./D1_Equipes.html" onclick="return loadIframe('JC_HH', this.href);">P&eacute;nalit&eacute;s par &eacute;quipe (Nouveau)</a></li>
+
+</ol>
+
+</ol>
+<div class="iframe">
+    <iframe height="1200" id="JC_HH" name="JC_HH" scrolling="no" width="650" 
+	src="./LM_Classements.html" frameborder="0">
+        Your browser doesn't support iframes.
+    </iframe>
+</div>
+
+</body>
+</html>
+

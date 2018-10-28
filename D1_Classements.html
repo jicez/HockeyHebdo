@@ -13,14 +13,14 @@
             type: 'line'
         },
         title: {
-            text: 'Evolution du classement par club et par journ&eacute;e<br/>Division 1 2018-19'
+            text: 'Evolution du classement par club et par journée<br/>Division 1 2018-19'
         },
         subtitle: {
         	text: '<br/>Hockey Hebdo<br/>'			
         },
         xAxis: {
            categories: [
-			'J1<br\>', 'J2<br\>','J3<br/>','J4', 'J5', 'J6', 'J7<br/>','J8<br/>','J9<br/>','J10<br/>'
+			'J1<br\>15/09', 'J2<br\>22/09','J3<br/>29/09','J4<br/>13/10', 'J5<br/>20/10', 'J6<br/>27/10', 'J7<br/>','J8<br/>','J9<br/>','J10<br/>'
 			]
         },
         yAxis: {
@@ -46,7 +46,7 @@
                     formatter: function() {
 						var index = this.point.x;						
 						switch(index) {
-							case 0: case 2: case 4: case 10:
+							case 0: case 2: case 4: case 5:
 								if (this.point.y != 16) {
 									return  this.point.y + ':' +  this.series.name;
 								}
@@ -60,59 +60,59 @@
         series: [
 			{            
 			name: 'Neuilly sur Marne',            
-			data: [5,4,3,2,1],			
+			data: [5,4,3,2,1,1],			
 			color:'red'        
 			}, {            
 			name: 'Cergy',            
-			data: [4,3,2,1,3],			
+			data: [4,3,2,1,3,3],			
 			color:'green'        
 			} , {            
 			name: 'Brest ',            
-			data: [1,1,5,4,5],			
+			data: [1,1,5,4,5,5],			
 			color:'black'        
 			},  {            
 			name: 'Tours',            
-			data: [2,2,1,3,2],			
+			data: [2,2,1,3,2,2],			
 			color:'lightblue'        
 			}, {           
 			name: 'Caen',            
-			data: [7,10,12,9,6],			
+			data: [7,10,12,9,6,6],			
 			color:'darkblue'        
 			}, {           
 			name: 'Montpelier',            
-			data: [9,11,8,11,13],			
+			data: [9,11,8,11,13,13],			
 			color:'#ff6600'        
 			}, {           
 			name: 'Nantes',            
-			data: [6,8,7,12,11],			
+			data: [6,8,7,12,11,12],			
 			color:'#0066ff'        
 			}, {            
 			name: 'La Roche sur Yon',            
-			data: [11,12,11,10,10],			
+			data: [11,12,11,10,10,7],			
 			color:'red'        
 			},{            
 			name: 'Mont-Blanc',            
-			data: [8,5,4,5,7],			
+			data: [8,5,4,5,7,8],			
 			color:'#008000'        
 			},{            
 			name: 'Cholet',            
-			data: [12,9,10,8,9],			
+			data: [12,9,10,8,9,9],			
 			color:'grey'        
 			}, {           
 			name: 'Briançon',            
-			data: [10,6,9,6,8],			
+			data: [10,6,9,6,8,11],			
 			color:'purple'        
 			}, {            
 			name: 'Dunkerque',            
-			data: [3,7,6,7,4],			
+			data: [3,7,6,7,4,4],			
 			color : '#1C325C'        
 			}, {            
 			name: 'Marseille',            
-			data: [13,13,13,13,12],			
+			data: [13,13,13,13,12,10],			
 			color:'#54BEF7'        
 			}, {           
 			name: 'Chambéry',            
-			data: [14,14,14,14,14],			
+			data: [14,14,14,14,14,14],			
 			color:'#F4FE14'        
 			}
 		]

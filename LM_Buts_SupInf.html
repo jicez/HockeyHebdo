@@ -21,7 +21,7 @@ $(function () {
                 text: 'Ligue Magnus<br/>Infériorités et supériorités'
             },
             subtitle: {
-                text: 'Réussite en supériorité et en infériorité numérique<br/>après la 9e journée du 12-13/10'
+                text: 'Réussite en supériorité et en infériorité numérique<br/>après la 13e journée du 27/10'
             },
             xAxis: [{
                 categories: categories,
@@ -107,36 +107,36 @@ $(function () {
             },
  		   series: [{
                 name: 'Supériorités',
-                data: [46,36,32,56,44,24,52,41,49,43,51,50,  44],
+                data: [78,48,49,67,60,41,67,55,65,60,68,71,  61],
  				color: 'lightblue',
                 stack: 'supinf',
             }, {
 			// 
                 name: 'Buts marqués',
-                data: [9,7,3,10,5,7,16,8,6,7,10,8, 8], 
+                data: [15,8,6,12,9,9,24,13,11,10,14,12, 12], 
                 color: 'darkblue',
                 stack: 'supinf'
             },{
 			// negative
                 name: 'Infériorités',
-                data: [-35,-47,-43,-48,-44,-37,-46,-49,-53,-37,-38,-47, -44],
+                data: [-60,-54,-67,-55,-57,-53,-55,-72,-66,-65,-58,-67, -61],
                 stack: 'supinf',
                 color: 'orange'
             },{
 			// 
                 name: 'Buts encaissés',
-                data: [-7,-13,-5,-5,-10,-7,-2,-11,-16,-5,-4,-11, -8], 
+                data: [-11,-14,-9,-5,-13,-11,-4,-21,-18,-13,-7,-17, -12], 
 				stack: 'supinf',
                 color : 'red'
             },{
 			// neg
                 name: 'Buts marqués en infériorité',
-                data: [-0,-0,-1,-0,-0,-1,-0,-1,-0,-1,-0,-1, -0.4], 
+                data: [-0,-0,-3,-0,-1,-1,-0,-1,-1,-1,-0,-1, -0.75], 
                 stack: 'contre',
                 color : 'green'
             },{
 				name: 'Buts encaissés en supériorité',
-                data: [0,0,0,0,0,0,0,0,3,1,0,1, 0.4], 
+                data: [1,0,0,2,0,0,0,0,3,1,0,2, 0.75], 
                 stack: 'contre',
                 color : 'black'
             }]

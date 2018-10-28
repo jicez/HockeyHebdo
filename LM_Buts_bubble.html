@@ -37,6 +37,7 @@
 Highcharts.chart('container', {
 
     chart: {
+		animation: true,
         type: 'bubble',
         plotBorderWidth: 1,
         zoomType: 'xy'
@@ -45,6 +46,9 @@ Highcharts.chart('container', {
     title: {
         text: 'Efficacité des équipes: buts marqués/encaissés et points'
     },
+	subtitle: {        	
+		text: 'Ligue Magnus 2018-19<br/>Hockey Hebdo'        
+	}, 
 	legend: {
         enabled: false
     },
@@ -64,13 +68,13 @@ Highcharts.chart('container', {
     },
 	tooltip: {
         useHTML: true,
-        headerFormat: '<table>',
-        pointFormat: '<tr><th colspan="2"><h3>{point.club}</h3></th></tr>' +
-            '<tr><th>Buts encaissés:</th><td>{point.x}</td></tr>' +
-            '<tr><th>Buts marqués:</th><td>{point.y}</td></tr>' +
-            '<tr><th>Points:</th><td>{point.z}</td></tr>',
-        footerFormat: '</table>',
-        followPointer: true
+        headerFormat: '',
+		footerFormat: '<br/><br/>',
+        pointFormat: '<h2>{point.club}</h2>' +
+            '<b>Buts marqués :</b> {point.y} <br/><b>Buts encaissés :</b> {point.x}<br/> #{point.name} : {point.z} pts',
+        followPointer: false,
+		shadow: true,		
+		shared: true
     },
 	plotOptions: {
         series: {
@@ -86,28 +90,28 @@ Highcharts.chart('container', {
 		},
     series: [{
         data:
-[
-            { x: 16, y: 50, z: 25, name: '1', club: 'Grenoble' },
-            { x: 16, y: 32, z: 24, name: '2', club: 'Rouen' },
-            { x: 19, y: 33, z: 22, name: '7', club: 'Bordeaux' },
-            { x: 21, y: 23, z: 13, name: '3', club: 'Gap' },
-            { x: 26, y: 25, z: 12, name: '4', club: 'Nice' },
-            { x: 24, y: 19, z: 11, name: '6', club: 'Lyon' },
-            { x: 31, y: 27, z: 15, name: '5', club: 'Angers' },
-            { x: 28, y: 22, z: 11, name: '8', club: 'Anglet' },
-            { x: 27, y: 22, z: 8, name: '10', club: 'Amiens' },
-            { x: 37, y: 17, z: 5, name: '11', club: 'Mulhouse' },
-            { x: 36, y: 30, z: 10, name: '9', club: 'Chamonix' },
-            { x: 39, y: 20, z: 6, name: '12', club: 'Strasbourg' }
+		[
+            { x: 20, y: 48, z: 36, name: '1', club: 'Rouen <img src="http://www.hockeyhebdo.com/imagesUp/clubs/15_m.jpg" width=40/>',color: '#f2ac3a' },
+            { x: 25, y: 66, z: 31, name: '2', club: 'Grenoble <img src="http://www.hockeyhebdo.com/imagesUp/clubs/7_m.jpg" width=40/>', color: '#f54a01' },
+            { x: 23, y: 37, z: 25, name: '9', club: 'Bordeaux <img src="http://www.hockeyhebdo.com/imagesUp/clubs/97_m.jpg" width=40/>', color: '#6a160c' },
+            { x: 45, y: 48, z: 19, name: '5', club: 'Chamonix <img src="http://www.hockeyhebdo.com/imagesUp/clubs/19_m.jpg" width=40/>', color: '#9e0d13' },
+            { x: 36, y: 36, z: 17, name: '6', club: 'Gap <img src="http://www.hockeyhebdo.com/imagesUp/clubs/99_m.jpg" width=40/>', color : '#40c7ff' },
+            { x: 38, y: 40, z: 17, name: '7', club: 'Nice <img src="http://www.hockeyhebdo.com/imagesUp/clubs/131_m.jpg" width=40/>', color: '#d70415' },
+            { x: 36, y: 44, z: 20, name: '4', club: 'Lyon <img src="http://www.hockeyhebdo.com/imagesUp/clubs/142_m.jpg" width=40/>', color: 'blue' },
+            { x: 36, y: 40, z: 20, name: '3', club: 'Angers <img src="http://www.hockeyhebdo.com/imagesUp/clubs/4_m.jpg" width=40/>', color: 'purple' },
+            { x: 43, y: 31, z: 15, name: '10', club: 'Anglet <img src="http://www.hockeyhebdo.com/imagesUp/clubs/166_m.jpg" width=40/>', color: 'green' },
+            { x: 40, y: 34, z: 17, name: '8', club: 'Amiens <img src="http://www.hockeyhebdo.com/imagesUp/clubs/13_m.jpg" width=40/>', color: '#9b9c9e' },
+            { x: 63, y: 36, z: 10, name: '11', club: 'Mulhouse <img src="http://www.hockeyhebdo.com/imagesUp/clubs/135_m.jpg" width=40/>', color: 'black' },
+            { x: 56, y: 29, z: 7, name: '12', club: 'Strasbourg <img src="http://www.hockeyhebdo.com/imagesUp/clubs/17_m.jpg" width=40/>', color: '#f1e90b' }
         ],
 
 		
         marker: {
             fillColor: {
-                radialGradient: { cx: 0.4, cy: 0.3, r: 0.7 },
+                radialGradient: { cx: 0.2, cy: 0.4, r: 0.8 },
                 stops: [
-                    [0, 'rgba(255,255,255,0.5)'],
-                    [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0.5).get('rgba')]
+                    [0, '{point.color}'], //rgba(255,255,255,0.5)  
+                    [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0.1).get('rgba')]
                 ]
             }
         }
